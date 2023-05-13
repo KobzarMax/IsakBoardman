@@ -50,6 +50,9 @@ const urlRoutes = {
 // create a function that watches the url and calls the urlLocationHandler
 const urlRoute = (event) => {
 	event = event || window.event; // get window.event if event argument not provided
+	if (!event.target || !event.target.matches(".nav .nav-link")) {
+		return;
+	}
 	event.preventDefault();
 	// window.history.pushState(state, unused, target link);
 	window.history.pushState({}, "", event.target.href);
