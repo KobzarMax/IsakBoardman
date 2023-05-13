@@ -1,0 +1,271 @@
+/* styles.css */
+html * {
+  font-weight:600;
+  padding: 0;
+  margin: 0;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: black;
+}
+
+/* Customize styles for containers */
+.container {
+  width: 100%;
+  height: 100%; /* Set the height of the container as needed */
+  position: relative; /* Ensure that the container is positioned */
+}
+  
+
+/* customize styles navigation tab*/
+.nav .nav-tabs {
+  background-color: none;
+  
+}
+  /* Customize styles for left and right containers */
+  .left-container {
+    height: 100%;
+    background-color:none;
+    width: 10%;
+    padding-top: 20px;
+  }
+  
+  .right-container {
+    height: 100vh;
+    background-color:none;
+    padding: 0px;
+  }
+ 
+  /* Customize styles for carousle */
+
+.carousel-item img {
+  cursor: pointer;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  object-fit: cover; /* change from cover to contain */
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+
+  /* Customize styles for isak name */
+  .button.clicked {
+    color: #555;
+  }
+  
+  
+
+.button, .button:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.button:active {
+  color: #777777;
+  transition: color 0.2s ease;
+}
+
+  /* bottom left container */
+
+.bottom-left-container {
+  position: fixed;
+  background-color: none;
+  height: 100px;
+  padding-left: 30px;
+  bottom: 40px; 
+  width: 100%;
+ 
+}
+
+/* project container */
+
+.project-item h2 {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 767px) {
+  #name {
+  display: none;
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 90vh;
+}
+#content {
+  overflow-x: hidden;
+  width: 100%;
+  padding: 20px;
+}
+
+aside {
+  padding: 20px;
+  min-height: 90vh;
+}
+aside .container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90vh;
+}
+aside .container::before, aside .container::after {
+  display: none;
+}
+.nav-container .nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.projects-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.projects-content .slick-list {
+  overflow-x: hidden;
+  max-width: 800px;
+}
+
+.projects-content .slick-track{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+.projects-content .slick-arrow{
+  position: absolute;
+  top: 50%;
+  font-size: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.projects-content .slick-slide {
+  max-width: 800px;
+}
+.slick-dots {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.slick-dot {
+  background-color: transparent;
+  border: none;
+  list-style: none;
+}
+.contact-wrapper {
+  max-width: 100%;
+}
+.contact-wrapper * {
+  font-size: 16px;
+}
+.info-container * {
+  font-size: 16px;
+}
+@media (min-width: 992px) {
+  .info-container.col-md-9 {
+    float: right;
+  }  
+}
+
+@media (max-width: 1200px) {
+  .projects-content {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .slick-dots {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  .slick-dots .slick-active {
+    border-bottom: 2px solid #555;
+  }
+  .projects-content .slick-list {
+    margin: 0 auto;
+  }
+  .project-item h2 {
+    text-align: center;
+  }
+  .projects-content .slick-list {
+    max-width: 600px;
+  }
+  .projects-content .slick-slide {
+    max-width: 600px;
+  }
+}
+@media (max-width: 992px) {
+  .slick-dots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+  .slick-dots li {
+    width: fit-content;
+  }
+  .projects-content .slick-list {
+    max-width: 400px;
+  }
+  .projects-content .slick-slide {
+    max-width: 400px;
+  }
+  .projects-content {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  #name {
+      display: block;
+  }
+  .projects-content .slick-list {
+    max-width: 300px;
+    margin-left: 0;
+  }
+  .projects-content .slick-slide {
+    max-width: 300px;
+  }
+  aside {
+    padding: 20px 0;
+  }
+  .slick-dot {
+    font-size: 14px;
+  }
+  #content {
+    padding: 20px 0;
+  }
+  .project-item p {
+    font-size: 16px;
+  }
+  .button {
+    font-size: 16px;
+  }
+  .nav-link {
+    font-size: 16px;
+  }
+  .info-container span {
+    text-align: justify;
+  }
+}
+
+@media (max-width: 472px) {
+  .projects-content .slick-list {
+    max-width: 240px;
+  }
+  .projects-content .slick-slide {
+    max-width: 240px;
+  }
+}
