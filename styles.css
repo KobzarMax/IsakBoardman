@@ -213,6 +213,10 @@ aside .container::before, aside .container::after {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
   }
+  aside .container {
+    justify-content: flex-start;
+    gap: 40px;
+  }
   .slick-dots li {
     width: fit-content;
   }
