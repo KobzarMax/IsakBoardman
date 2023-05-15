@@ -13,52 +13,6 @@ $(document).ready(function() {
 
 //
 
-// routing
-
-document.addEventListener("click", (e) => {
-	const { target } = e;
-	if (!target.matches(".nav .nav-link")) {
-		return;
-	}
-	e.preventDefault();
-	urlRoute();
-});
-
-// create an object that maps the url to the template, title, and description
-const urlRoutes = {
-	"/IsakBoardman": {
-		template: "./templates/home.html",
-		title: "Isak Boardman",
-	},
-	"/projects": {
-		template: "./templates/projects.html",
-		title: "Projects | Isak Boardman",
-    init: () => {
-			initProjects();
-		},
-	},
-	"/contact": {
-		template: "./templates/contact.html",
-		title: "Contact | Isak Boardman",
-	},
-	"/info": {
-			template: "./templates/info.html",
-			title: "Info | Isak Boardman",
-		},
-};
-
-// create a function that watches the url and calls the urlLocationHandler
-const urlRoute = (event) => {
-	event = event || window.event; // get window.event if event argument not provided
-	if (!event.target || !event.target.matches(".nav .nav-link")) {
-		return;
-	}
-	event.preventDefault();
-	// window.history.pushState(state, unused, target link);
-	window.history.pushState({}, "", event.target.href);
-	urlLocationHandler();
-};
-
 const initProjects = () => {
   console.log("Initializing projects page...");
   // Add your jQuery code here
@@ -100,6 +54,54 @@ const initProjects = () => {
       // add any other options you need
     }); 
   });
+};
+
+// routing
+
+const baseUrl = window.location.origin;
+
+// create a function that watches the url and calls the urlLocationHandler
+const urlRoute = (event) => {
+	event = event || window.event; // get window.event if event argument not provided
+	if (!event.target || !event.target.matches(".nav .nav-link")) {
+		return;
+	}
+	event.preventDefault();
+	// window.history.pushState(state, unused, target link);
+	window.history.pushState({}, "", event.target.href);
+	urlLocationHandler();
+};
+
+document.addEventListener("click", (e) => {
+	const { target } = e;
+	if (!target.matches(".nav .nav-link")) {
+		return;
+	}
+	e.preventDefault();
+	urlRoute();
+});
+
+// create an object that maps the url to the template, title, and description
+const urlRoutes = {
+	"/": {
+		template: `${baseUrl}/templates/home.html`,
+		title: "Isak Boardman",
+	},
+	"/projects": {
+		template: `${baseUrl}/templates/projects.html`,
+		title: "Projects | Isak Boardman",
+    init: () => {
+			initProjects();
+		},
+	},
+	"/contact": {
+		template: `${baseUrl}/templates/contact.html`,
+		title: "Contact | Isak Boardman",
+	},
+	"/info": {
+			template: `${baseUrl}/templates/info.html`,
+			title: "Info | Isak Boardman",
+		},
 };
 
 // create a function that handles the url location
