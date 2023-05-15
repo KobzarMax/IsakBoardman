@@ -84,22 +84,22 @@ document.addEventListener("click", (e) => {
 // create an object that maps the url to the template, title, and description
 const urlRoutes = {
 	"/": {
-		template: `${baseUrl}/templates/home.html`,
+		template: `./templates/home.html`,
 		title: "Isak Boardman",
 	},
 	"/projects": {
-		template: `${baseUrl}/templates/projects.html`,
+		template: `./templates/projects.html`,
 		title: "Projects | Isak Boardman",
-    init: () => {
-			initProjects();
-		},
+		init: () => {
+				initProjects();
+			},
 	},
 	"/contact": {
-		template: `${baseUrl}/templates/contact.html`,
+		template: `./templates/contact.html`,
 		title: "Contact | Isak Boardman",
 	},
 	"/info": {
-			template: `${baseUrl}/templates/info.html`,
+			template: `./templates/info.html`,
 			title: "Info | Isak Boardman",
 		},
 };
