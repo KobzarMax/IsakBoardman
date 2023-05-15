@@ -1,0 +1,20 @@
+{
+  "name": "alexander",
+  "version": "1.0.0",
+  "description": "",
+  "main": "JavaScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KobzarMax/IsakBoardman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KobzarMax/IsakBoardman/issues"
+  },
+  "homepage": "https://github.com/KobzarMax/IsakBoardman"
+}
