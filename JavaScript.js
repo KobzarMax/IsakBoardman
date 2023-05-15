@@ -104,6 +104,8 @@ const urlRoutes = {
 		},
 };
 
+console.log(urlRoutes)
+
 // create a function that handles the url location
 const urlLocationHandler = async () => {
 	const location = window.location.pathname; // get the url path
