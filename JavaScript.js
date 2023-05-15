@@ -10,7 +10,6 @@ $(document).ready(function() {
 
 // get projects
 
-
 //
 
 const initProjects = () => {
@@ -56,87 +55,31 @@ const initProjects = () => {
   });
 };
 
-// routing
+initProjects();
 
-const baseUrl = window.location.origin;
+// new routing
 
-// create a function that watches the url and calls the urlLocationHandler
-const urlRoute = (event) => {
-	event = event || window.event; // get window.event if event argument not provided
-	if (!event.target || !event.target.matches(".nav .nav-link")) {
-		return;
-	}
-	event.preventDefault();
-	// window.history.pushState(state, unused, target link);
-	window.history.pushState({}, "", event.target.href);
-	urlLocationHandler();
-};
+$(document).ready(function(){
+    const projects = document.getElementById('projects');
+    const info = document.getElementById('info');
+    const contact = document.getElementById('contact');
 
-document.addEventListener("click", (e) => {
-	const { target } = e;
-	if (!target.matches(".nav-link")) {
-		return;
-	}
-	e.preventDefault();
-	urlRoute();
+    const sections = ['#projects', '#info', '#contact'];
+    const sectionTitles = ['Isak Boardmna | Projects', 'Isak Boardmna | Info', 'Isak Boardmna | Contact'];
+
+    document.addEventListener("click", (e) => {
+        const { target } = e;
+        if (!target.matches(".nav-link")) {
+            return;
+        }
+        e.preventDefault();
+        const link = target.href;
+        const sectionID = link.substring(link.indexOf("#"));
+        for (const section of sections) {
+            $(section).addClass('hidden');
+        }
+        $(sectionID).toggleClass('hidden');
+        const sectionIndex = sections.indexOf(sectionID);
+        document.title = sectionTitles[sectionIndex];
+    });
 });
-
-// create an object that maps the url to the template, title, and description
-const urlRoutes = {
-	"/": {
-	  template: `${baseUrl}/IsakBoardman/templates/home.html`,
-	  title: "Isak Boardman",
-	},
-	"/projects": {
-	  template: `${baseUrl}/IsakBoardman/templates/projects.html`,
-	  title: "Projects | Isak Boardman",
-	  init: () => {
-		initProjects();
-	  },
-	},
-	"/contact": {
-	  template: `${baseUrl}/IsakBoardman/templates/contact.html`,
-	  title: "Contact | Isak Boardman",
-	},
-	"/info": {
-	  template: `${baseUrl}/IsakBoardman/templates/info.html`,
-	  title: "Info | Isak Boardman",
-	},
-  };
-
-console.log(urlRoutes)
-
-// create a function that handles the url location
-const urlLocationHandler = async () => {
-	const location = window.location.pathname; // get the url path
-	// if the path length is 0, set it to primary page route
-	if (location.length == 0) {
-		location = "/";
-	}
-	// get the route object from the urlRoutes object
-	const route = urlRoutes[location] || urlRoutes["404"];
-	// get the html from the template
-	const html = await fetch(route.template).then((response) => response.text());
-
-	console.log(route)
-
-	// set the content of the content div to the html
-	document.getElementById("content").innerHTML = html;
-	// set the title of the document to the title of the route
-	document.title = route.title;
-	// set the description of the document to the description of the route
-	document
-		.querySelector('meta[name="description"]');
-	
-	// if the route has an init function, call it
-	if (typeof route.init === "function") {
-		route.init();
-	}
-};
-
-// add an event listener to the window that watches for url changes
-window.onpopstate = urlLocationHandler;
-// call the urlLocationHandler function to handle the initial url
-window.route = urlRoute;
-// call the urlLocationHandler function to handle the initial url
-urlLocationHandler();

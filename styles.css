@@ -30,8 +30,8 @@ html * {
   }
   
   .right-container {
-    height: 100vh;
-    background-color:none;
+    height: 93vh;
+    background-color: transparent;
     padding: 0px;
   }
  
@@ -95,7 +95,7 @@ html * {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  min-height: 90vh;
+  min-height: 93vh;
 }
 #content {
   overflow-x: hidden;
@@ -105,14 +105,14 @@ html * {
 
 aside {
   padding: 20px;
-  min-height: 90vh;
+  min-height: 93vh;
 }
 aside .container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  height: 90vh;
+  height: 93vh;
 }
 aside .container::before, aside .container::after {
   display: none;
@@ -161,6 +161,9 @@ aside .container::before, aside .container::after {
   align-items: flex-start;
   gap: 16px;
 }
+.slick-dots .slick-active .slick-dot {
+  text-decoration: underline;
+}
 .slick-dot {
   background-color: transparent;
   border: none;
@@ -190,9 +193,6 @@ aside .container::before, aside .container::after {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-  }
-  .slick-dots .slick-active {
-    border-bottom: 2px solid #555;
   }
   .projects-content .slick-list {
     margin: 0 auto;
@@ -272,4 +272,8 @@ aside .container::before, aside .container::after {
   .projects-content .slick-slide {
     max-width: 240px;
   }
+}
+
+.hidden {
+  display: none;
 }
