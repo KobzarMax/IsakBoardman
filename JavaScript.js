@@ -58,7 +58,7 @@ const initProjects = () => {
 
 // routing
 
-const baseUrl = window.location.origin;
+const baseUrl = "https://kobzarmax.github.io/IsakBoardman"
 
 // create a function that watches the url and calls the urlLocationHandler
 const urlRoute = (event) => {
@@ -84,22 +84,22 @@ document.addEventListener("click", (e) => {
 // create an object that maps the url to the template, title, and description
 const urlRoutes = {
 	"/": {
-		template: `./templates/home.html`,
+		template: `${baseUrl}/templates/home.html`,
 		title: "Isak Boardman",
 	},
 	"/projects": {
-		template: `./templates/projects.html`,
+		template: `${baseUrl}/templates/projects.html`,
 		title: "Projects | Isak Boardman",
 		init: () => {
 				initProjects();
 			},
 	},
 	"/contact": {
-		template: `./templates/contact.html`,
+		template: `${baseUrl}/templates/contact.html`,
 		title: "Contact | Isak Boardman",
 	},
 	"/info": {
-			template: `./templates/info.html`,
+			template: `${baseUrl}/templates/info.html`,
 			title: "Info | Isak Boardman",
 		},
 };
