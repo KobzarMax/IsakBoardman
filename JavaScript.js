@@ -26,7 +26,7 @@ document.addEventListener("click", (e) => {
 
 // create an object that maps the url to the template, title, and description
 const urlRoutes = {
-	"/": {
+	"/IsakBoardman": {
 		template: "./templates/home.html",
 		title: "Isak Boardman",
 	},
@@ -41,10 +41,10 @@ const urlRoutes = {
 		template: "./templates/contact.html",
 		title: "Contact | Isak Boardman",
 	},
-  "/info": {
-		template: "./templates/info.html",
-		title: "Info | Isak Boardman",
-	},
+	"/info": {
+			template: "./templates/info.html",
+			title: "Info | Isak Boardman",
+		},
 };
 
 // create a function that watches the url and calls the urlLocationHandler
