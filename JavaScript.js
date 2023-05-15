@@ -74,7 +74,7 @@ const urlRoute = (event) => {
 
 document.addEventListener("click", (e) => {
 	const { target } = e;
-	if (!target.matches(".nav .nav-link")) {
+	if (!target.matches(".nav-link")) {
 		return;
 	}
 	e.preventDefault();
@@ -115,6 +115,9 @@ const urlLocationHandler = async () => {
 	const route = urlRoutes[location] || urlRoutes["404"];
 	// get the html from the template
 	const html = await fetch(route.template).then((response) => response.text());
+
+	console.log(route)
+
 	// set the content of the content div to the html
 	document.getElementById("content").innerHTML = html;
 	// set the title of the document to the title of the route
