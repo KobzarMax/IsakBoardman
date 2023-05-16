@@ -95,12 +95,23 @@ html * {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  min-height: 93vh;
+  min-height: 100vh;
+  max-height: 100vh;
 }
 #content {
   overflow-x: hidden;
   width: 100%;
+  min-height: 93vh;
+  max-height: 100vh;
+}
+
+#projects, #info, #contact {
   padding: 20px;
+}
+
+#home {
+  max-height: 100vh;
+  min-height: 100vh;
 }
 
 aside {
@@ -138,7 +149,7 @@ aside .container::before, aside .container::after {
 
 .projects-content .slick-track{
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   overflow-x: hidden;
 }
@@ -153,7 +164,57 @@ aside .container::before, aside .container::after {
 
 .projects-content .slick-slide {
   max-width: 800px;
+  object-fit: cover;
 }
+
+.projects-content .slick-slide img {
+  object-fit: cover;
+}
+
+/* home-carousel */
+.home-carousel-wrapper {
+  max-height: 100vh;
+  min-height: 100vh;
+}
+.home-carousel {
+  width: 100%;
+  max-height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.home-carousel .slick-list {
+  overflow-x: hidden;
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
+.home-carousel .slick-track{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
+.home-carousel .slick-slide {
+  max-width: 100%;
+  width: 100%;
+  max-height: 100vh;
+  min-height: 100vh;
+  object-fit: cover;
+}
+.home-carousel .slick-slide img {
+  object-fit: cover;
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
+/* home carousel */
+
+
 .slick-dots {
   list-style: none;
   display: flex;
@@ -208,26 +269,72 @@ aside .container::before, aside .container::after {
   }
 }
 @media (max-width: 992px) {
+  .content-wrapper, #content {
+    min-height: auto;
+    max-height: fit-content;
+  }
   .slick-dots {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
   }
+  aside {
+    width: 100%;
+    min-height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    z-index: 999;
+    box-shadow: -2px 4px 32px -6px rgba(66, 68, 90, 1);
+    max-height: 120px;
+    height: 90px;
+    padding: 10px 0;
+  }
+  #content {
+    padding-bottom: 90px;
+  }
   aside .container {
-    justify-content: flex-start;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
     gap: 40px;
+    height: auto;
+  }
+  .nav-container .nav {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .nav::before, .nav::after {
+    display: none;
+  }
+  #content {
+    overflow: visible;
   }
   .slick-dots li {
     width: fit-content;
+    justify-self: center;
   }
   .projects-content .slick-list {
-    max-width: 400px;
+    max-width: 100%;
   }
   .projects-content .slick-slide {
-    max-width: 400px;
+    max-width: 100%;
   }
   .projects-content {
     align-items: flex-start;
+  }
+  .content-wrapper {
+    flex-direction: column-reverse;
+  }
+  .projects-content .slick-slide {
+    object-fit: fill;
+  }
+  .projects-content .slick-slide img {
+    object-fit: fill;
+  }
+  #carouselExampleControls1 {
+    margin-bottom: 12px;
   }
 }
 
@@ -235,21 +342,8 @@ aside .container::before, aside .container::after {
   #name {
       display: block;
   }
-  .projects-content .slick-list {
-    max-width: 300px;
-    margin-left: 0;
-  }
-  .projects-content .slick-slide {
-    max-width: 300px;
-  }
-  aside {
-    padding: 20px 0;
-  }
   .slick-dot {
     font-size: 14px;
-  }
-  #content {
-    padding: 20px 0;
   }
   .project-item p {
     font-size: 16px;
@@ -262,15 +356,6 @@ aside .container::before, aside .container::after {
   }
   .info-container span {
     text-align: justify;
-  }
-}
-
-@media (max-width: 472px) {
-  .projects-content .slick-list {
-    max-width: 240px;
-  }
-  .projects-content .slick-slide {
-    max-width: 240px;
   }
 }
 
