@@ -28,13 +28,58 @@ const initProjectsSlider = () => {
     customPaging: function(slider, i) {
       return '<button class="slick-dot" data-slick-index="' + i + '">Project ' + (i + 1) + '</button>';
     }
-  });
+  })
 
-  $('.projects-content').on('afterChange', function(event, slick, currentSlide) {
-    $('.slick-dot').removeClass('active');
-    $('.slick-dot[data-slick-index="' + currentSlide + '"]').addClass('active');
-  });
+  initInnerSlider();
 
+  // Call the function on page load and window resize
+  hideActiveSlideOnMobile();
+};
+
+// Show active slide when a dot is clicked on mobile
+$('.projects-content').on('click', '.slick-dot', function() {
+  if ($(window).width() < 992) {
+    const dots = document.querySelectorAll('.slick-dots li');
+    dots.forEach((dot) => {
+      if (!dot.classList.contains('slick-active')) {
+        dot.classList.add('hidden');
+      }  
+    });
+    $('.back').removeClass('hidden');
+    $('.projects-content .slick-list').removeClass('visibility');
+  }
+});
+
+$('.back').on('click', function() {
+  if ($(window).width() < 992) {
+    const dots = document.querySelectorAll('.slick-dots li');
+    dots.forEach((dot) => {
+      if (!dot.classList.contains('slick-active')) {
+        dot.classList.remove('hidden');
+      }
+    });
+    $('.back').addClass('hidden');
+    $('.projects-content .slick-list').addClass('visibility');
+  }
+});
+
+
+// Hide active slide on mobile
+function hideActiveSlideOnMobile() {
+  if ($(window).width() < 992) {
+    $('.projects-content .slick-list').addClass('visibility');
+  }
+}
+
+$(window).on('load resize', hideActiveSlideOnMobile);
+
+// Uninitialize the projects slider
+const uninitProjectsSlider = () => {
+  $('.projects-content').slick('unslick');
+  $('.carousel-inner').slick('unslick');
+};
+
+const initInnerSlider = () => {
   $('.carousel-inner').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -48,13 +93,7 @@ const initProjectsSlider = () => {
     autoplaySpeed: 5000,
     // add any other options you need
   });
-};
-
-// Uninitialize the projects slider
-const uninitProjectsSlider = () => {
-  $('.projects-content').slick('unslick');
-  $('.carousel-inner').slick('unslick');
-};
+}
 
 //Initialize home carousel
 const initHomeSlider = () => {
