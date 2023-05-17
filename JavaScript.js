@@ -38,9 +38,12 @@ const initProjectsSlider = () => {
   $('.carousel-inner').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
+    prevArrow: null, // Remove the default previous button
+    nextArrow: '<button type="button" class="slick-next">Next</button>', // Define a custom next button
     dots: false,
     infinite: true,
+    swipe: false,
     autoplay: true,
     autoplaySpeed: 5000,
     // add any other options you need
@@ -58,13 +61,16 @@ const initHomeSlider = () => {
   $('.home-carousel').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true, // Set arrows to true
     dots: false,
     infinite: true,
+    swipe: false,
     autoplay: true,
     autoplaySpeed: 5000,
+    prevArrow: null, // Remove the default previous button
+    nextArrow: '<button type="button" class="slick-next">Next</button>', // Define a custom next button
     // add any other options you need
-  }); 
+  });
 }
 // Uninitialize the home carousel
 const uninitHomeSlider = () => {
