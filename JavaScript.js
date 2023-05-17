@@ -34,6 +34,8 @@ const initProjectsSlider = () => {
 
   // Call the function on page load and window resize
   hideActiveSlideOnMobile();
+
+  $('.back').addClass('hidden');
 };
 
 // Show active slide when a dot is clicked on mobile
