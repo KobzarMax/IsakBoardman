@@ -124,6 +124,7 @@ aside .container {
   justify-content: space-between;
   flex-direction: column;
   height: 93vh;
+  white-space: nowrap;
 }
 aside .container::before, aside .container::after {
   display: none;
@@ -133,6 +134,9 @@ aside .container::before, aside .container::after {
   align-items: flex-start;
   flex-direction: column;
   gap: 16px;
+}
+#name {
+  line-height: 16px;
 }
 
 .projects-content {
