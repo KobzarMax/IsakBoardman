@@ -1,16 +1,30 @@
 
 // click on isak
-
+/*
 $(document).ready(function() {
-    $(".button").click(function() {
-      $(this).css("color", "grey");
+  $(".button").click(function() {
+    $(this).animate({ color: "grey" }, 500, function() {
+      $(this).animate({ color: "black" }, 500);
     });
   });
+}); */
 
 
 // get projects
 
 //
+let isProjectsSliderInitialized = false;
+// Function to hide the project title on mobile
+const hideProjectTitleOnMobile = () => {
+  if ($(window).width() < 992) {
+    $('.project-item h2').hide();
+  } else {
+    $('.project-item h2').show();
+  }
+};
+
+// Call the function on page load and window resize
+$(window).on('load resize', hideProjectTitleOnMobile);
 
 // Initialize the projects slider
 const initProjectsSlider = () => {
@@ -34,6 +48,8 @@ const initProjectsSlider = () => {
 
   // Call the function on page load and window resize
   hideActiveSlideOnMobile();
+
+  isProjectsSliderInitialized = true;
 
   $('.back').addClass('hidden');
 };
@@ -143,9 +159,26 @@ $(document).ready(function(){
     document.title = sectionTitles[sectionIndex];
 
     if (sectionID === '#projects') {
-      initProjectsSlider();
+      const dots = document.querySelectorAll('.slick-dots li');
+      const track = document.querySelector('.projects-content');
+      const trackList = track.querySelector('.slick-list');
+      if (trackList) {
+        trackList.classList.add('visibility');``
+      }
+      
+      dots.forEach((dot) => {
+        dot.classList.remove('hidden');
+      });
+
+      if (!isProjectsSliderInitialized) {
+        initProjectsSlider();
+        isProjectsSliderInitialized = true;
+      } else {
+        // Do something if the slider is already initialized
+      }
     } else {
       uninitProjectsSlider();
+      isProjectsSliderInitialized = false;
     }
     if (sectionID === '#home') {
       initHomeSlider();
@@ -154,3 +187,4 @@ $(document).ready(function(){
     }
   });
 });
+
